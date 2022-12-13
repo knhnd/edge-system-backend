@@ -12,12 +12,12 @@ app.get('/', (req, res) => {
 
 // test
 app.get(`/test`, (req, res) => {
-  const test = [{ message: 'Success', Input: test}];
+  const test = [{ message: 'Success', Request: req }];
   res.json(test);
 });
 
 // Web Server (localhost)
 const port = 3000;
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+  console.log(`Listening on port http://localhost:${port}/`);
 });

@@ -1,23 +1,23 @@
 'use strict';
 const express = require('express');
+const PreprocessingService = require('./services/PreprocessingService.js');
 
 // create express app
 const app = express();
 
 // routing
 app.get('/', (req, res) => {
-  const test = [{ message: 'It Works!' }];
-  res.json(test);
+  const data = { message: 'success', path: '/' };
+  console.log(data);
+  res.json('It Works!');
 });
 
-// test
-app.get(`/test`, (req, res) => {
-  const test = [{ message: 'Success', Request: req }];
-  res.json(test);
+app.get('/test', async (req, res) => {
+  const data = await PreprocessingService.test();
+  res.json(data);
 });
 
 // Web Server (localhost)
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Listening on port http://localhost:${port}/`);
+app.listen(3000, () => {
+  console.log('Listening on port http://localhost:3000/');
 });
